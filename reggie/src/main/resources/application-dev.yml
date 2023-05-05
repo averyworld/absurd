@@ -1,0 +1,9 @@
+# 专门为 开发环境准备 (注意属性和属性值之间必须有空格)
+
+reggie:
+  upload:
+    root:
+      path: /Users/okeeah/Downloads/files
+
+
+

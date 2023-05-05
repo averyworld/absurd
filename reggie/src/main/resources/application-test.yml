@@ -1,0 +1,27 @@
+# 这个配置文件专门为 测试环境准备
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://139.22.13.22:3306/heima387_reggie?useSSL=false
+
+
+logging:
+  file:
+    name: /Users/avery/Documents/logs/reggie.log
+  level:
+    root: debug
+
+com:
+  aliyuncs:
+    profile:
+      region-id: cn-hangzhou
+      access-key-id: hjjkjh7LLEoENLcCSA4tx
+      secret: kjhkll3loZNYy8hLhVGU2
+    dysmsapi:
+      request:
+        sign-name: 黑马健康
+        template-code: SMS_171111537
