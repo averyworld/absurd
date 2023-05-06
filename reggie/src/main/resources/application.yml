@@ -1,17 +1,39 @@
 server:
   port: 8080
-spring:
-  application:
-    name: reggie
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
-    username: root
-    password: 123456789
+
+#配置mybatis
+# mapper扔哪了
+# 实体类扔哪了
 mybatis-plus:
+  type-aliases-package: com.bytedance.reggie.entity.
+  mapper-locations: classpath*:/mappers/**/*.xml
   configuration:
-    map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl #显示具体生成的sql语句 注意该配置位置归属于mp之下
+    map-underscore-to-camel-case: true  #无需配置 默认值就是true
   global-config:
     db-config:
-      id-type: ASSIGN_ID
+      id-type: assign_id #雪花算法
+      logic-delete-field: isDeleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+#mp配置逻辑删除字段 (可以自动实现逻辑删除和隐藏不显示逻辑删除的数据)
+
+
+#配置spring默认部署环境
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+
+jasypt:
+  encryptor:
+    password: ${JASYPT_PASSWORD}
+    algorithm: PBEWithMD5AndDES
+
+
+
+
+
+
+

@@ -1,14 +1,16 @@
 package com.okeeah.reggie.dto;
 
 
+import com.okeeah.reggie.entity.Setmeal;
+import com.okeeah.reggie.entity.SetmealDish;
 import lombok.Data;
 
 import java.util.List;
-//
-//@Data
-//public class SetmealDto extends Setmeal {
-//
-//    private List<SetmealDish> setmealDishes;
-//
-//    private String categoryName;
-//}
+
+@Data
+public class SetmealDto extends Setmeal {
+
+    private List<SetmealDish> setmealDishes;
+
+    private String categoryName;
+}

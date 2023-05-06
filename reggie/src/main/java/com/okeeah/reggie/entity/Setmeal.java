@@ -7,6 +7,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -17,34 +18,75 @@ import java.util.Date;
 @Data
 public class Setmeal implements Serializable {
 
-    private Long id;//主键
+    private static final long serialVersionUID = 1L;
 
-    private Long setmealId;//套餐id
+    /**
+     * 主键
+     */
+    private Long id;
 
-    private Long dishId;//菜品id
+    /**
+     * 菜品分类id
+     */
+    private Long categoryId;
 
-    private String name;//菜品名称 （冗余字段）
+    /**
+     * 套餐名称
+     */
+    private String name;
 
-    private BigDecimal price;//菜品原价
+    /**
+     * 套餐价格
+     */
+    private BigDecimal price;
 
-    private Integer copies;//份数
+    /**
+     * 状态 0:停用 1:启用
+     */
+    private Integer status;
 
-    private Integer sort;//排序
+    /**
+     * 编码
+     */
+    private String code;
 
+    /**
+     * 描述信息
+     */
+    private String description;
+
+    /**
+     * 图片
+     */
+    private String image;
+
+    /**
+     * 创建时间
+     */
     @TableField(fill = FieldFill.INSERT)
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createTime;
+    private LocalDateTime createTime;
 
+    /**
+     * 更新时间
+     */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
+    /**
+     * 创建人
+     */
     @TableField(fill = FieldFill.INSERT)
     private Long createUser;
 
+    /**
+     * 修改人
+     */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updateUser;
 
-    //是否删除
+    /**
+     * 是否删除
+     */
     private Integer isDeleted;
+
 }

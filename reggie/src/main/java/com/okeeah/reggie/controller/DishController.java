@@ -49,7 +49,7 @@ public class DishController {
    // 回显修改
    @GetMapping("/{id}")
     public R findById(@PathVariable("id")Long id){
-       DishDTO byId = dishService.getByI4DTO(id);
+       DishDTO byId = dishService.getById4DTO(id);
        return  R.success(byId);
    }
 
@@ -73,7 +73,7 @@ public class DishController {
     }
 
     @DeleteMapping
-    public R deleteByIds(@RequestParam Long ids){
+    public R deleteByIds(@RequestParam List<Long> ids){
         dishService.deleteByIds(ids);
         return R.success("删除菜品成功");
     }

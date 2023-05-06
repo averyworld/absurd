@@ -10,6 +10,8 @@ import com.okeeah.reggie.vo.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 public class CategoryController {
@@ -57,7 +59,10 @@ public class CategoryController {
     //根据类型查询分类列表
     @GetMapping("/category/list")
     public R findByType(Integer type){
-        //List<Category> categoryList =  categoryService.findByType(type);
-        return R.success();
+        LambdaQueryWrapper<Category> queryWrapper = new LambdaQueryWrapper<>();
+//        有可能前端没有传type参数
+        queryWrapper.eq(type!=null,Category::getType, type);
+        List<Category> list = categoryService.list(queryWrapper);
+        return R.success(list);
     }
 }
